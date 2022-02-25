@@ -75,7 +75,6 @@ public class Main {
 
         playGame(word);
     }
-    
 
     public static void playGame(CharSequence word) {
         int numOfWrongGuesses = 0;
@@ -130,7 +129,6 @@ public class Main {
         System.out.println("Better luck next time");
         mainMenu();
     }
-
 
     public static void readRules() {
         //system print all the rules
