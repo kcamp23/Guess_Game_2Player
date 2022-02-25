@@ -75,6 +75,7 @@ public class Main {
 
         playGame(word);
     }
+    
 
     public static void playGame(CharSequence word) {
         int numOfWrongGuesses = 0;
