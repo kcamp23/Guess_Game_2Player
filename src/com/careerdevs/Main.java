@@ -1,7 +1,6 @@
 package com.careerdevs;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Main {
 
@@ -24,7 +23,7 @@ public class Main {
         if (userGuess == 1) {
             howManyPlayers();
         } else if (userGuess == 2) {
-            readRules();
+            //readRules();
         } else if (userGuess == 3) {
             System.out.print("Thank you for playing, please come back again soon");
         }
@@ -76,68 +75,53 @@ public class Main {
         playGame(word);
     }
 
-    public static void playGame(CharSequence word) {
+    public static void playGame(String word) {
         int numOfWrongGuesses = 0;
         boolean iterated = false;
         String temp = "";
-        String currentCorrect = "";
         ArrayList<String> alreadyChoosen = new ArrayList<>();
 
 
         //System.out.print(word);
         while (numOfWrongGuesses <= 10) {
             String wordGuess = CLI.readString("What would you like to guess?");
-
-            for (int i = 0; i < alreadyChoosen.size(); i++) {
-                while (alreadyChoosen.containsAll(Collections.singleton(wordGuess))) {
-                    System.out.println("Sorry thats already been choosen, please try again:");
-                    wordGuess = CLI.readString("What would you like to guess?");
-                }
-            }
             alreadyChoosen.add(wordGuess);
-            for (int i = 0; i < word.length(); i++) {
 
-                if (wordGuess.equals(Character.toString(word.charAt(i)))) {
+            if(alreadyChoosen.contains(wordGuess)){
+                System.out.println("That has already been guessed please try again.");
+            }
+            if (word.contains(wordGuess)) {
+                for (int i = 0; i < word.length(); i++) {
                     // correct answer method
                     if (!iterated) {
                         temp += Character.toString(word.charAt(i));
                     } else {
-
-                        currentCorrect = Character.toString(temp.charAt(i)).replace("-", wordGuess);
+                        String currentCorrect = Character.toString(temp.charAt(i)).replace("-", wordGuess);
                         temp = temp.substring(0, i) + currentCorrect + temp.substring(i + 1, temp.length());
-
-                    }
-                } else {
-                    if (!iterated) {
-                        temp += "-";
-                        //change to only count WRONG guesses
-
-                    }
-                    if (temp.equals(word)) {
-                        System.out.println("YOU GUESSED CORRECTLY!!!!");
-                        mainMenu();
-
+                        {
+                        }
+                        if (!iterated) {
+                            temp += "-";
+                        }
                     }
                 }
             }
-            numOfWrongGuesses++;
-            iterated = true;
+
+            for (int i = 0; i < word.length(); i++) {
+                String currentCorrect = Character.toString(temp.charAt(i)).replace("-", wordGuess);
+                temp = temp.substring(0, i) + currentCorrect + temp.substring(i + 1, temp.length());
+                numOfWrongGuesses++;
+                iterated = true;
+
+            }
             System.out.println(temp + "\n" + alreadyChoosen);
-            System.out.println("You have made " + numOfWrongGuesses+"/10 guesses");
+            System.out.println("You have made " + numOfWrongGuesses + "/10 guesses");
         }
-        System.out.println(word + "  was your word");
-        System.out.println("Better luck next time");
-        mainMenu();
+            System.out.println(word + "  was your word");
+            System.out.println("Better luck next time");
+            mainMenu();
+
+
+        }
     }
-
-    public static void readRules() {
-        //system print all the rules
-    }
-
-
-    public static void endGame() {
-
-    }
-}
-
 
