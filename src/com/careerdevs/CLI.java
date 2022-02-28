@@ -8,17 +8,20 @@ public class CLI {
     private static  Scanner scanner  = new Scanner(System.in);
 
     public static String readString (String question ) {
-        while (true) {
-            System.out.print(question);
-            String inputString = scanner.nextLine();
 
-            if (!inputString.trim().equals("")) {
-                return inputString;
-            }
-
-            System.out.print(question);
-            return scanner.nextLine();
-        }
+             System.out.print(question);
+            return String.valueOf(scanner.nextLine().toLowerCase().trim().charAt(0));
+//        while (true) {
+//            System.out.print(question);
+//            String inputString = scanner.nextLine();
+//
+//            if (!inputString.trim().equals("")) {
+//                return inputString;
+//            }
+//
+//            System.out.print(question);
+//            return scanner.nextLine();
+//        }
     }
 
     public static int readInt (String question, int min, int max){
@@ -64,6 +67,46 @@ public class CLI {
     }
 
 }
+
+
+
+
+
+
+
+// if (word.contains(wordGuess)) {
+//         for (int i = 0; i < word.length(); i++) {
+//        // correct answer method
+//        if (!iterated) {
+//        temp += Character.toString(word.charAt(i));
+//        } else {
+//        String currentCorrect = Character.toString(temp.charAt(i)).replace("-", wordGuess);
+//        temp = temp.substring(0, i) + currentCorrect + temp.substring(i + 1, temp.length());
+//        {
+//        }
+//        if (!iterated) {
+//        temp += "-";
+//        }
+//        }
+//        }
+//        }
+//
+//        for (int i = 0; i < word.length(); i++) {
+//        String currentCorrect = Character.toString(temp.charAt(i)).replace("-", wordGuess);
+//        temp = temp.substring(0, i) + currentCorrect + temp.substring(i + 1, temp.length());
+//        numOfWrongGuesses++;
+//        iterated = true;
+//
+//        }
+//        System.out.println(temp + "\n" + alreadyChoosen);
+//        System.out.println("You have made " + numOfWrongGuesses + "/10 guesses");
+//        }
+//
+//
+//
+//
+//
+//
 
 
 
